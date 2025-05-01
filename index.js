@@ -84,3 +84,75 @@ myPlayer.then((resolve)=>{
 .catch((error)=>{
     console.log("Get the Error value:", error);
 })
+
+// CHECK EVEN OR ODD NUMBER USING PROMISE FUNTION 
+function checkEvenNumber(number){
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            if(number%2==0){
+                console.log(`The number ${number} is an Even number`);
+            }else{
+                console.log(`The number ${number} is and Odd number`)
+            }
+        }, 1000);
+    })
+
+}
+checkEvenNumber(6)
+.then((response)=>console.log("Q1: ", response))
+.catch((error)=>console.log("Q2", error));
+
+
+
+function checkEvenNumber(number) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (number % 2 === 0) {
+                console.log(`The number ${number} is an Even number`);
+                // No resolve() here
+            } else {
+                console.log(`The number ${number} is an Odd number`);
+                // No reject() here
+            }
+        }, 1000);
+    });
+}
+
+checkEvenNumber(6)
+.then((response) => console.log("Q1: ", response))  // response will be undefined
+.catch((error) => console.log("Q2: ", error));
+
+
+// Function Chaning 
+
+
+function firstStep(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve("Get the Value of the 1 ")
+        },1000)
+    })
+}
+function secondStep(prev){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve(`${prev} and 2`)
+        },1000)
+    })
+}
+
+function thirdStep(prev){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve(`${prev} and 3rd `)
+        },1000)
+    })
+}
+
+
+firstStep()
+.then(secondStep)
+.then(thirdStep)
+.then((result)=>{
+    console.log("Result:", result)
+})

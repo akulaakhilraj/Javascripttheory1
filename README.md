@@ -27,3 +27,59 @@ A Promise can be created using the Promise constructor, which takes a function w
 Once a Promise is created, you can consume its eventual result using the .then() and .catch() methods. These methods allow you to specify what to do when the Promise is fulfilled (resolved) or rejected.
 
 Promises can be chained together using .then() to execute asynchronous operations sequentially or conditionally. Each .then() call returns a new Promise, allowing for easy chaining.
+
+Code: 
+
+let myPromise= new Promise((resolve,reject)=>{
+    //Perform Asynchronus operations
+    setTimeout(()=>{
+        resolve("Get the fetch data");
+    },1000)
+})
+
+myPromise.then((result)=>{
+    console.log("Get the Result Outcome:", result);
+}).catch((error)=>{
+    console.log("Get the value dii:", error);
+})
+
+
+
+# What is a Promise Chnaining
+
+When you use .then() on a Promise, it returns another Promise. This lets you attach another .then() to continue the sequence. 
+
+Each step in the chain:
+Waits for the previous Promise to resolve.
+Gets the result of the previous step as input.
+Can return a new value or another Promise.
+
+
+function firstStep(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            resolve("Get the Value of the 1 ")
+        },1000)
+    })
+}
+function secondStep(prev){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve(`${prev} and 2`)
+        },1000)
+    })
+}
+function thirdStep(prev){
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve(`${prev} and 3rd `)
+        },1000)
+    })
+}
+
+firstStep()
+.then(secondStep)
+.then(thirdStep)
+.then((result)=>{
+    console.log("Result:", result)
+})
