@@ -1,6 +1,26 @@
 # Javascripttheory1
 Javascript
 
+# What is strict mode and unstrict mode difference
+
+--> Strict mode throws errors for actions that are silently ignored in non-strict mode.
+"use strict";
+x = 5; // ❌ ReferenceError: x is not defined
+
+-->In non-strict mode, this refers to the global object inside regular functions.
+   In strict mode, this is undefined, preventing accidental access to global scope.
+  
+    function test() {
+    console.log(this);
+    }
+
+    test(); 
+    // Non-strict → logs `window`
+    // Strict → logs `undefined`
+
+
+Duplicate Parameters in Functions are allowed in unstrict mode but not in strict mode gets Syntax Error
+
 
 # What is a Call Back Function? 
 Callbacks are functions passed as arguments to another function to be executed later, often used in asynchronous operations. They are typically used to handle the result of an asynchronous operation once it completes.
@@ -9,7 +29,18 @@ Callbacks can also be used for error handling in asynchronous operations.
 
 
 # What is a Promise and how it works?
-Promises is an Object that represent the eventual completion (or failure) of an asynchronous operation and allow chaining multiple asynchronous operations together. 
+Promises is an Object that represent the eventual completion(or failure) of an asynchronous operation and allow chaining multiple asynchronous operations together. 
+
+What are the benefits of Promises?
+--> Best use of handling Asyc/await
+--> Avoid Callback Hell 
+--> Support Chaining and composition 
+
+What are the drawback of Promises?
+
+--> Still require .catch error handling
+--> can lead to silent error if misused
+--> 
 
 Promises have several methods available:
 
@@ -83,3 +114,69 @@ firstStep()
 .then((result)=>{
     console.log("Result:", result)
 })
+
+
+
+
+# What is IIFE in javascript?
+
+The code in the module is wrapped in a function and get executed
+
+(function (){
+
+})(); #Here to wrap an ananomous function we need () and we can call it immediately
+
+The variables are private because of IIFE and require 
+
+
+# What is a V8 Engine?
+
+# What is a memory heap?
+
+# What is a Garbage Collector?
+
+
+# What is a synchronous and asynchronous?
+
+# What is a SetTimeout()?
+
+
+
+
+# Node.js Concepts and it's History
+
+# Node.js Hostory and working?
+
+
+
+# What is the difference between common.js and module.js
+
+common.js
+
+--> By default is works in node.js
+--> we use module.exports and require
+
+    module.exports=function name();
+    const function name anything =require function name();
+
+--> older way
+--> It is  a synchronous by default
+--> The code is run in non-strict mode
+
+
+
+module.js (ESM OR ES6)
+-->By default it works in react.js, angular.js
+-->we export directly and import it
+
+        export function name with function in it()
+        import {function name } from "path"
+--> newer way
+--> It is asynchronus
+--> The code is run in strict way.
+
+
+# What is the purpose of require in node.js
+In Node.js, `require` is used to import built-in modules, third-party, or custom modules into a file.
+It loads ypur local files, JSON files and share the reuseable logic 
+Wrap inside IIFE and Evalutaion and caching

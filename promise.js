@@ -107,4 +107,38 @@ firstStep()
 })
 
 
+//SUM OR EVEN ODD 
+function sumOrEven(){
+    return new Promise((resolve,reject)=>{
+        const number=50;
+        if (number<=40){
+            resolve("Even Number");
+        }
+        else{
+            reject("Odd number");
+        }
+    })
+}
+sumOrEven().then((msg)=>{
+    console.log(`${msg}`)
+}).catch((msg)=>{
+    console.log(`${msg}`);
+})
 
+
+
+function evenorOddNumber(){
+    return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+            const number =1000;
+            if(number>=1000){
+                resolve(`Number is greateer than`)
+            }
+            else{
+                reject(`Number is less than`)
+            }
+        },5000)
+    })
+}
+
+evenorOddNumber().then((msg)=>console.log(`${msg}`)).catch((msg)=>console.log(`${msg}`))
